@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Übung 2</title>
+<style>
+body {
+    margin: 30px auto;
+    max-width: 600px;
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: Arial;
+}
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0 40px 0 40px;
+}
+h2 {
+    margin: 60px 0 20px 0;
+}
+.table-header-row {
+    border-bottom: 2px solid black;
+}
+.table-footer-row {
+    border-top: 2px solid black;
+}
+.center {
+    text-align: center;
+}
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
+.monospace {
+    font-family: monospace;
+}
+code {
+    border-radius: 5px;
+    padding: 3px 8px 3px 8px;
+    background-color: lightgray;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 85%;
+}
+.code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    padding: 15px;
+    background-color: lightgray;
+    white-space: nowrap;
+    border-radius: 5px;
+    font-size: 11px;
+}
+.green {
+    color: #32a852;
+}
+.red {
+    color: #ff0000;
+}
+.orange {
+    color: #fa9e0c;
+}
+.overflow {
+    margin: 15px;
+    display: flex;
+    /*justify-content: center;*/
+}
+</style>
+</head>
+<body>
+<h1 class="center">Übung 2</h1>
+<h2 class="center">Zusammenfassung</h2>
+<table>
+<tr class="table-header-row"><th class="left">Aufgabe</th><th class="right">Bestanden</th></tr>
+<tr><td style="font-family:monospace">string_split</td><td class="right red"><b>Nein ✗</b></td>
+<tr><td style="font-family:monospace">make</td><td class="right green"><b>Ja ✓ 😄</b></td>
+<tr><td style="font-family:monospace">gdb</td><td class="right green"><b>Ja ✓ 😄</b></td>
+<tr class="table-footer-row"><td><b>Summe</b></td><td class="right"><b>2 / 3</b></td></tr>
+
+</table>
+<h2>Aufgabe string_split</h2>
+<div><b>Bestanden: <span class="red">Nein ✗</span></b></div>
+<div>Die Tests sind fehlgeschlagen mit Fehlercode 2.
+</div>
+<div>Test-Befehl:
+</div>
+<div> <div class="overflow"><div class="code">make run</div></div></div>
+<div></div>
+<div>Auf der Standardausgabe wurde folgender Text ausgegeben:
+</div>
+<div> <div class="overflow"><div class="code">checkmk string_split_tests.ts &gt; string_split_tests.c<br>gcc -g -fsanitize=address -fsanitize=undefined -Wall -Wextra -Werror -std=c99 `pkg-config --cflags check` string_split.c string_split_tests.c -o tests `pkg-config --libs check</div></div></div>
+<div></div>
+<div>Auf der Fehlerausgabe wurde folgender Text ausgegeben:
+</div>
+<div> <div class="overflow"><div class="code">string_split.c: In function &#x27;main&#x27;:<br>string_split.c:78:12: error: unused variable &#x27;n&#x27; [-Werror=unused-variable]<br>   78 |     size_t n = 10 * 1000 * 1000;<br>      |            ^<br>string_split.c:91:19: error: &#x27;output&#x27; is used uninitialized in this function [-Werror=uninitialized]<br>   91 |     size_t test = string_split(output, not_length_4, input, separator);<br>      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>cc1: all warnings being treated as errors<br>make: *** [Makefile:12: tests] Error 1</div></div></div>
+<div></div>
+<h3>Anmerkungen</h3>
+<div>Die Funktion <code>strtok</code> trennt an jedem einzelnen Zeichen des Delimiters (zweiter Parameter). In dieser Aufgabe sollte aber an einem String getrennt werden.</div>
+<h2>Aufgabe make</h2>
+<div><b>Bestanden: <span class="green">Ja ✓ 😄</span></b></div>
+<div>Die Tests für diese Aufgabe liefen fehlerfrei durch.
+</div>
+<div>Auf der Standardausgabe wurde folgender Text ausgegeben:
+</div>
+<div> <div class="overflow"><div class="code">test.sh: OK<br>game/game.c: OK<br>game/game.h: OK<br>monster/monster.c: OK<br>monster/monster.h: OK<br>player/player.c: OK<br>player/player.h: OK<br>sound/sound.h: OK<br>sound/sound.c: OK<br>texture/texture.h: OK<br>texture/texture.c: OK<br>erwartete_ausgabe.txt: OK<br>main.c: OK<br>	OK: Testdateien wurden nicht modifiziert.<br><br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall monster/monster.c<br>gcc -g -c -Wall player/player.c <br>gcc -g -c -Wall sound/sound.c <br>gcc -g -c -Wall texture/texture.c <br>gcc -g -c -Wall main.c <br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;game.o&quot; wurde erstellt.<br>OK: Datei &quot;sound.o&quot; wurde erstellt.<br>OK: Datei &quot;texture.o&quot; wurde erstellt.<br>OK: Datei &quot;player.o&quot; wurde erstellt.<br>OK: Datei &quot;monster.o&quot; wurde erstellt.<br>OK: Datei &quot;main.o&quot; wurde erstellt.<br>OK: Datei &quot;main&quot; wurde erstellt.<br>OK: Die Datei ausgabe.txt wurde erzeugt.<br>OK: Die Ausgabe stimmt mit der erwarteten Ausgabe überein.<br>INFO: &quot;make all&quot; wird nochmals ausgeführt.<br>make: Nothing to be done for &#x27;all&#x27;.<br>OK: Datei &quot;game.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;sound.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;texture.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;player.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;monster.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;main.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;main&quot; hat sich nicht geändert.<br>INFO: Datei &quot;game.h&quot; wird verändert und &quot;make all&quot; wird nochmals ausgeführt.<br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall main.c <br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;sound.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;player.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;monster.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;texture.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;game.o&quot; hat sich geändert.<br>OK: Datei &quot;main.o&quot; hat sich geändert.<br>OK: Datei &quot;main&quot; hat sich geändert.<br>INFO: Datei &quot;sound.h&quot; wird verändert und &quot;make all&quot; wird nochmals ausgeführt.<br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall sound/sound.c <br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;player.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;monster.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;texture.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;sound.o&quot; hat sich geändert.<br>OK: Datei &quot;game.o&quot; hat sich geändert.<br>OK: Datei &quot;main.o&quot; hat sich geändert.<br>OK: Datei &quot;main&quot; hat sich geändert.<br>INFO: Datei &quot;monster.h&quot; wird verändert und &quot;make all&quot; wird nochmals ausgeführt.<br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall monster/monster.c<br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;player.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;texture.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;sound.o&quot; hat sich geändert.<br>OK: Datei &quot;monster.o&quot; hat sich geändert.<br>OK: Datei &quot;game.o&quot; hat sich geändert.<br>OK: Datei &quot;main.o&quot; hat sich geändert.<br>OK: Datei &quot;main&quot; hat sich geändert.<br>INFO: Datei &quot;player.h&quot; wird verändert und &quot;make all&quot; wird nochmals ausgeführt.<br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall player/player.c <br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;texture.o&quot; hat sich nicht geändert.<br>OK: Datei &quot;sound.o&quot; hat sich geändert.<br>OK: Datei &quot;monster.o&quot; hat sich geändert.<br>OK: Datei &quot;player.o&quot; hat sich geändert.<br>OK: Datei &quot;game.o&quot; hat sich geändert.<br>OK: Datei &quot;main.o&quot; hat sich geändert.<br>OK: Datei &quot;main&quot; hat sich geändert.<br>INFO: Datei &quot;texture.h&quot; wird verändert und &quot;make all&quot; wird nochmals ausgeführt.<br>gcc -g -c -Wall game/game.c<br>gcc -g -c -Wall texture/texture.c <br>gcc -g game.o monster.o player.o sound.o texture.o main.o -o main<br>OK: Datei &quot;sound.o&quot; hat sich geändert.<br>OK: Datei &quot;monster.o&quot; hat sich geändert.<br>OK: Datei &quot;player.o&quot; hat sich geändert.<br>OK: Datei &quot;game.o&quot; hat sich geändert.<br>OK: Datei &quot;texture.o&quot; hat sich geändert.<br>OK: Datei &quot;main.o&quot; hat sich geändert.<br>OK: Datei &quot;main&quot; hat sich geändert.<br>INFO: &quot;make clean&quot; wird ausgeführt.<br>rm -f game.o monster.o player.o sound.o texture.o main.o main<br>OK: Datei &quot;game.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;sound.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;texture.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;player.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;monster.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;main.o&quot; wurde durch &quot;make clean&quot; entfernt.<br>OK: Datei &quot;main&quot; wurde durch &quot;make clean&quot; entfernt.</div></div></div>
+<div></div>
+<h2>Aufgabe gdb</h2>
+<div><b>Bestanden: <span class="green">Ja ✓ 😄</span></b></div>
+<div>Die Tests für diese Aufgabe liefen fehlerfrei durch.
+</div>
+<div>Auf der Standardausgabe wurde folgender Text ausgegeben:
+</div>
+<div> <div class="overflow"><div class="code">gcc file1.c file2.c file3.c main.c -o buggy -std=c99<br>OK: Kompiliert.<br><br>OK: Das Programm laeuft durch.<br><br>original/file1.c: OK<br>original/file2.c: OK<br>original/file3.c: OK<br>original/main.c: OK<br>OK: Pruefsummen validiert.<br><br>Zeile 226 in file2.c hat 1 unterschiedliche(s) Zeichen <br>            *p = 0;<br>            p = 0;<br><br><br>OK: Maximal 1 Zeichen geaendert.</div></div></div>
+<div></div></body>
+</html>
+
